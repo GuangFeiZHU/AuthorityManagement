@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='/static/jquery-3.2.1.js'></script>
+    <style>
+        .hide{
+            display: none;
+        }
+        .active{
+            color: red;
+        }
+        .menu-body{
+            margin-left: 20px;
+        }
+        .menu-body a{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="username">
+    <input type="submit" value="提交">
+</form>
+<h1>menu</h1>
+{{ menu_html|safe }}
+<script>
+$(function () {
+    $('.menu-header').click(function () {
+        $(this).next().removeClass('hide').parent().siblings('.menu-body').addClass('hide')
+    })
+})
+</script>
+</body>
+</html>
